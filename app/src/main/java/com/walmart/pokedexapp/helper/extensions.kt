@@ -15,6 +15,7 @@ fun Int.formatHeight(): String = String.format("%d cm", this*10)
 fun Int.formatWeight(): String = String.format("%d.%d kg", this/10, this%10)
 
 fun Response.PokeTypeData.typeName(): String = this.type.name
+fun Response.PokeDetailData.imageUrl(): String = this.sprites.back_default
 
 @ColorRes
 fun Response.PokeTypeData.getTypeColor() =

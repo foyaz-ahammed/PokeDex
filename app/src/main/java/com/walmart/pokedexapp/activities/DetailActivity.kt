@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.walmart.pokedexapp.databinding.ActivityDetailBinding
 import com.walmart.pokedexapp.helper.*
@@ -44,6 +45,10 @@ class DetailActivity: AppCompatActivity() {
     }
 
     private fun updateViews(item: Response.PokeDetailData) {
+        Glide.with(applicationContext)
+            .load(item.imageUrl())
+            .fitCenter()
+            .into(binding.photo)
         binding.name.text = item.name.capitalizeFirst()
         binding.weight.text = item.weight.formatWeight()
         binding.height.text = item.height.formatHeight()

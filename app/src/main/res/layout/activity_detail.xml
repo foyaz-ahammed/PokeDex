@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -21,7 +22,19 @@
         android:id="@+id/poke_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:constraint_referenced_ids="name, weight, height, weight_title, height_title" />
+        app:constraint_referenced_ids="photo, name, weight, height, weight_title, height_title" />
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="@dimen/poke_image_size"
+        android:layout_height="@dimen/poke_image_size"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/name"
@@ -30,12 +43,12 @@
         android:layout_marginTop="24dp"
         android:layout_marginBottom="36dp"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        android:textSize="36sp"
+        android:textSize="32sp"
         android:textStyle="bold"
         android:translationZ="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/photo"
         tools:text="Bulbasaur" />
 
     <com.google.android.material.chip.ChipGroup
@@ -56,8 +69,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="21sp"
-        app:layout_constraintEnd_toStartOf="@id/height"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/height"
         app:layout_constraintTop_toBottomOf="@id/types"
         tools:text="24.0 kg" />
 
@@ -67,8 +80,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="21sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/weight"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/weight"
         tools:text="17 cm" />
 
@@ -76,8 +89,8 @@
         android:id="@+id/weight_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@id/height"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/height"
         app:layout_constraintTop_toBottomOf="@id/weight"
         android:text="@string/weight" />
 

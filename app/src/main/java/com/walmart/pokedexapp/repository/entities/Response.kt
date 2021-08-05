@@ -23,12 +23,18 @@ class Response {
         @Json(name = "name") val name: String,
         @Json(name = "weight") val weight: Int,
         @Json(name = "height") val height: Int,
-        @Json(name = "types") val types: List<PokeTypeData>
+        @Json(name = "types") val types: List<PokeTypeData>,
+        @Json(name = "sprites") val sprites: Sprites
     )
 
     @JsonClass(generateAdapter = true)
     class PokeTypeData (
         @Json(name = "type") val type: PokeType
+    )
+
+    @JsonClass(generateAdapter = true)
+    class Sprites(
+        @Json(name = "back_default") val back_default: String
     )
 
     @JsonClass(generateAdapter = true)
