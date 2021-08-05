@@ -14,6 +14,7 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.walmart.pokedexapp.R
 import com.walmart.pokedexapp.repository.entities.Response
+import com.walmart.pokedexapp.repository.entities.StateItem
 
 fun Int.prettyPrintNo(): String = String.format("#%03d", this)
 fun String.capitalizeFirst(): String = replaceFirstChar { it.uppercase() }
@@ -51,6 +52,39 @@ fun Response.PokeTypeData.getTypeColor() =
         else -> R.color.gray_21
     }
 
+fun Response.State.convertToStateItem(): StateItem {
+    val max: Int = 300
+    val shortName: String
+    val color: Int
+    when(stat.name) {
+        "hp" -> {
+            shortName = "HP"
+            color = R.color.colorPrimary
+        }
+        "attack" -> {
+            shortName = "ATK"
+            color = R.color.md_orange_100
+        }
+        "defense" -> {
+            shortName = "DEF"
+            color = R.color.md_blue_100
+        }
+        "special-attack" -> {
+            shortName = "SP-ATK"
+            color = R.color.md_orange_200
+        }
+        "special-defense" -> {
+            shortName = "SP-DEF"
+            color = R.color.md_blue_200
+        }
+        else -> {
+            shortName = "SPD"
+            color = R.color.flying
+        }
+    }
+
+    return StateItem(shortName, base_stat, max, color)
+}
 
 @SuppressLint("CheckResult")
 fun <T> RequestBuilder<T>.onEndLoading(onLoadingEnd: () -> Unit) = apply {

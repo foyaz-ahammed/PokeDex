@@ -10,8 +10,10 @@ import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
+import com.walmart.pokedexapp.adapters.StateListAdapter
 import com.walmart.pokedexapp.databinding.ActivityDetailBinding
 import com.walmart.pokedexapp.helper.capitalizeFirst
+import com.walmart.pokedexapp.helper.convertToStateItem
 import com.walmart.pokedexapp.helper.formatHeight
 import com.walmart.pokedexapp.helper.formatWeight
 import com.walmart.pokedexapp.helper.getTypeColor
@@ -26,6 +28,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity: AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
+    private val adapter = StateListAdapter()
     private val viewModel by viewModel<PokeDetailViewModel>()
 
     companion object {
@@ -38,6 +41,7 @@ class DetailActivity: AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.stats.adapter = adapter
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         viewModel.getPokeData().observe(this) {
@@ -73,6 +77,8 @@ class DetailActivity: AppCompatActivity() {
 
             binding.types.addView(chip)
         }
+
+        adapter.submitList(item.stats.map { it.convertToStateItem() })
 
         binding.loadingLayout.alpha = 1f
         binding.loadingLayout.visibility = View.VISIBLE

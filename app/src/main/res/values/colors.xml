@@ -27,6 +27,10 @@
     <color name="dark">#040706</color>
     <color name="dragon">#378A94</color>
     <color name="gray_21">#B1A5A5</color>
+    <color name="md_orange_100">#FFA726</color>
+    <color name="md_orange_200">#FF6D00</color>
+    <color name="md_blue_100">#81D4fA</color>
+    <color name="md_blue_200">#0091EA</color>
 
     <color name="darkGray">#31323D</color>
     <color name="mediumGray">#C7C7CC</color>

@@ -24,7 +24,8 @@ class Response {
         @Json(name = "weight") val weight: Int,
         @Json(name = "height") val height: Int,
         @Json(name = "types") val types: List<PokeTypeData>,
-        @Json(name = "sprites") val sprites: Sprites
+        @Json(name = "sprites") val sprites: Sprites,
+        @Json(name = "stats") val stats: List<State>,
     )
 
     @JsonClass(generateAdapter = true)
@@ -33,13 +34,24 @@ class Response {
     )
 
     @JsonClass(generateAdapter = true)
+    class PokeType(
+        @Json(name = "name") val name: String,
+        @Json(name = "url") val url: String
+    )
+
+    @JsonClass(generateAdapter = true)
     class Sprites(
         @Json(name = "back_default") val back_default: String
     )
 
     @JsonClass(generateAdapter = true)
-    class PokeType(
-        @Json(name = "name") val name: String,
-        @Json(name = "url") val url: String
+    class State(
+        @Json(name = "base_stat") val base_stat: Int,
+        @Json(name = "stat") val stat: Stat
+    )
+
+    @JsonClass(generateAdapter = true)
+    class Stat(
+        @Json(name = "name") val name: String
     )
 }
