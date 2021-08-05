@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PokedexApp</string>
+    <string name="search">Search</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="error_loading_poke">Error loading poke</string>
+</resources>
