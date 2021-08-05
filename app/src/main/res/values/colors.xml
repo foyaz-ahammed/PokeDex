@@ -30,4 +30,7 @@
 
     <color name="darkGray">#31323D</color>
     <color name="mediumGray">#C7C7CC</color>
+
+    <color name="placeholder_gradient_start">#12000000</color>
+    <color name="placeholder_gradient_end">#59000000</color>
 </resources>

@@ -69,6 +69,8 @@ dependencies {
 
     implementation 'androidx.room:room-common:2.2.6'
 
+    implementation "com.facebook.shimmer:shimmer:${versions.shimmer}"
+
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

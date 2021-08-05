@@ -24,6 +24,23 @@
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="photo, name, weight, height, weight_title, height_title" />
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/loading_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/photo"
+        app:layout_constraintEnd_toEndOf="@id/photo"
+        app:layout_constraintStart_toStartOf="@id/photo"
+        app:layout_constraintTop_toTopOf="@id/photo">
+
+        <View
+            android:id="@+id/placeholder_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_gif_placeholder" />
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <ImageView
         android:id="@+id/photo"
         android:layout_width="@dimen/poke_image_size"

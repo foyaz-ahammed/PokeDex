@@ -1,14 +1,24 @@
 package com.walmart.pokedexapp.activities
 
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
 import com.walmart.pokedexapp.databinding.ActivityDetailBinding
-import com.walmart.pokedexapp.helper.*
+import com.walmart.pokedexapp.helper.capitalizeFirst
+import com.walmart.pokedexapp.helper.formatHeight
+import com.walmart.pokedexapp.helper.formatWeight
+import com.walmart.pokedexapp.helper.getTypeColor
+import com.walmart.pokedexapp.helper.imageUrl
+import com.walmart.pokedexapp.helper.onEndLoading
+import com.walmart.pokedexapp.helper.swapVisibility
+import com.walmart.pokedexapp.helper.typeName
 import com.walmart.pokedexapp.repository.entities.LoadResult
 import com.walmart.pokedexapp.repository.entities.Response
 import com.walmart.pokedexapp.viewmodels.PokeDetailViewModel
@@ -62,6 +72,26 @@ class DetailActivity: AppCompatActivity() {
             }
 
             binding.types.addView(chip)
+        }
+
+        binding.loadingLayout.alpha = 1f
+        binding.loadingLayout.visibility = View.VISIBLE
+        binding.photo.doOnPreDraw {
+            val gifSize = binding.photo.measuredWidth
+
+            Glide.with(this)
+                .load(item.imageUrl())
+                .override(gifSize, gifSize)
+                .error(ColorDrawable(Color.GREEN))
+                .fallback(ColorDrawable(Color.GREEN))
+                .onEndLoading {
+                    swapVisibility(
+                        100,
+                        binding.photo,
+                        binding.loadingLayout
+                    )
+                }
+                .into(binding.photo)
         }
     }
 
