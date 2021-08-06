@@ -1,162 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginTop="80dp"
-        android:theme="@style/ProgressBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/poke_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="photo, name, weight, height, weight_title, height_title" />
-
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/loading_layout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/photo"
-        app:layout_constraintEnd_toEndOf="@id/photo"
-        app:layout_constraintStart_toStartOf="@id/photo"
-        app:layout_constraintTop_toTopOf="@id/photo">
-
-        <View
-            android:id="@+id/placeholder_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/background_gif_placeholder" />
-
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <ImageView
-        android:id="@+id/photo"
-        android:layout_width="@dimen/poke_image_size"
-        android:layout_height="@dimen/poke_image_size"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="36dp"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        android:translationZ="100dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/photo"
-        tools:text="Bulbasaur" />
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/types"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        app:chipSpacingHorizontal="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/weight"
-        style="@style/TextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="21sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/height"
-        app:layout_constraintTop_toBottomOf="@id/types"
-        tools:text="24.0 kg" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/height"
-        style="@style/TextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="21sp"
-        app:layout_constraintStart_toEndOf="@id/weight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/weight"
-        tools:text="17 cm" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/weight_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/height"
-        app:layout_constraintTop_toBottomOf="@id/weight"
-        android:text="@string/weight" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/height_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/weight"
-        app:layout_constraintTop_toBottomOf="@id/height"
-        android:text="@string/height"/>
-
-    <TextView
-        android:id="@+id/error_poke"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:visibility="gone"
-        android:gravity="center"
-        android:text="@string/error_loading_poke"
-        android:textAppearance="@style/ErrorTextStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/stats_title"
-        style="@style/TextStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/states"
-        android:textSize="21sp"
-        android:textColor="?android:textColorPrimary"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/weight_title" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/stats"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/stats_title"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:overScrollMode="never"
-        android:orientation="vertical"/>
+        android:layout_height="match_parent"
+        android:padding="10dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="80dp"
+            android:theme="@style/ProgressBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/poke_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="photo, name, weight, height, weight_title, height_title" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/loading_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/photo"
+            app:layout_constraintEnd_toEndOf="@id/photo"
+            app:layout_constraintStart_toStartOf="@id/photo"
+            app:layout_constraintTop_toTopOf="@id/photo">
+
+            <View
+                android:id="@+id/placeholder_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_gif_placeholder" />
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <ImageView
+            android:id="@+id/photo"
+            android:layout_width="@dimen/poke_image_size"
+            android:layout_height="@dimen/poke_image_size"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="36dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:translationZ="100dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/photo"
+            tools:text="Bulbasaur" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/types"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            app:chipSpacingHorizontal="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/name"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/weight"
+            style="@style/TextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="21sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/height"
+            app:layout_constraintTop_toBottomOf="@id/types"
+            tools:text="24.0 kg" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/height"
+            style="@style/TextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="21sp"
+            app:layout_constraintStart_toEndOf="@id/weight"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/weight"
+            tools:text="17 cm" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/weight_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/height"
+            app:layout_constraintTop_toBottomOf="@id/weight"
+            android:text="@string/weight" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/height_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/weight"
+            app:layout_constraintTop_toBottomOf="@id/height"
+            android:text="@string/height"/>
+
+        <TextView
+            android:id="@+id/error_poke"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone"
+            android:gravity="center"
+            android:text="@string/error_loading_poke"
+            android:textAppearance="@style/ErrorTextStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/stats_title"
+            style="@style/TextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/states"
+            android:textSize="21sp"
+            android:textColor="?android:textColorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weight_title" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/stats"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@+id/stats_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:overScrollMode="never"
+            android:orientation="vertical"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

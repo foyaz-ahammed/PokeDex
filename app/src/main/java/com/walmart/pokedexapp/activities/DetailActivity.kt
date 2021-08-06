@@ -10,6 +10,7 @@ import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.google.android.material.chip.Chip
+import com.walmart.pokedexapp.R
 import com.walmart.pokedexapp.adapters.StateListAdapter
 import com.walmart.pokedexapp.databinding.ActivityDetailBinding
 import com.walmart.pokedexapp.helper.capitalizeFirst
@@ -68,10 +69,13 @@ class DetailActivity: AppCompatActivity() {
         binding.height.text = item.height.formatHeight()
 
         binding.types.removeAllViews()
+
+        val chipPadding = resources.getDimension(R.dimen.chip_padding).toInt()
         item.types.sortedBy { it.typeName() }.forEach { type ->
             val chip = Chip(this).apply {
                 text = type.typeName().capitalizeFirst()
                 setTextColor(Color.WHITE)
+                setPadding(chipPadding, 0, chipPadding, 0)
                 setChipBackgroundColorResource(type.getTypeColor())
             }
 

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.walmart.pokedexapp.databinding.StateItemBinding
+import com.walmart.pokedexapp.helper.getString
 import com.walmart.pokedexapp.repository.entities.StateItem
 
 class StateListAdapter: ListAdapter<StateItem, StateListAdapter.ViewHolder>(DiffCallback()) {
@@ -22,7 +23,10 @@ class StateListAdapter: ListAdapter<StateItem, StateListAdapter.ViewHolder>(Diff
     class ViewHolder(private val binding: StateItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: StateItem) {
             binding.name.text = item.short_name
-            binding.number.text = item.base_stat.toString()
+            binding.progressBar.max = item.max.toFloat()
+            binding.progressBar.labelText = item.getString()
+            binding.progressBar.progress = item.base_stat.toFloat()
+            binding.progressBar.colorBackground = binding.root.context.getColor(item.color)
         }
     }
 

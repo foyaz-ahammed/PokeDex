@@ -68,7 +68,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
 
     implementation 'androidx.room:room-common:2.2.6'
-
+    implementation "com.github.skydoves:progressview:1.1.2"
     implementation "com.facebook.shimmer:shimmer:${versions.shimmer}"
 
     testImplementation 'junit:junit:4.+'

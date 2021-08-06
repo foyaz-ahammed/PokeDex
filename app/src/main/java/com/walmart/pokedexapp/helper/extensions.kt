@@ -53,13 +53,13 @@ fun Response.PokeTypeData.getTypeColor() =
     }
 
 fun Response.State.convertToStateItem(): StateItem {
-    val max: Int = 300
+    val max: Int = 200
     val shortName: String
     val color: Int
     when(stat.name) {
         "hp" -> {
             shortName = "HP"
-            color = R.color.colorPrimary
+            color = R.color.md_orange_200
         }
         "attack" -> {
             shortName = "ATK"
@@ -71,7 +71,7 @@ fun Response.State.convertToStateItem(): StateItem {
         }
         "special-attack" -> {
             shortName = "SP-ATK"
-            color = R.color.md_orange_200
+            color = R.color.grass
         }
         "special-defense" -> {
             shortName = "SP-DEF"
@@ -85,6 +85,8 @@ fun Response.State.convertToStateItem(): StateItem {
 
     return StateItem(shortName, base_stat, max, color)
 }
+
+fun StateItem.getString(): String = "%d/%d".format(base_stat, max)
 
 @SuppressLint("CheckResult")
 fun <T> RequestBuilder<T>.onEndLoading(onLoadingEnd: () -> Unit) = apply {
