@@ -23,8 +23,19 @@ fun String.getNo(): Int {
 }
 fun List<Response.PokeItem>.mapIndexAdded() = map { Response.PokeItem(it.url.getNo(), it.name, it.url) }
 
-fun Int.formatHeight(): String = String.format("%d cm", this*10)
-fun Int.formatWeight(): String = String.format("%d.%d kg", this/10, this%10)
+/**
+ * Format height in m
+ */
+fun Int.formatHeight(): String =
+    if(this % 10 == 0) String.format("%d m", this / 10)
+    else String.format("%d.%d m", this / 10, this % 10)
+
+/**
+ * Format height in Kg
+ */
+fun Int.formatWeight(): String =
+    if(this % 10 == 0) String.format("%d kg", this / 10)
+    else String.format("%d.%d kg", this / 10, this % 10)
 
 fun Response.PokeTypeData.typeName(): String = this.type.name
 fun Response.PokeDetailData.imageUrl(): String = this.sprites.back_default
