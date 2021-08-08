@@ -3,6 +3,7 @@ package com.walmart.pokedexapp.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import com.walmart.pokedexapp.R
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         viewModel.loading().observe(this) {
             binding.progressBar.isVisible = it == LoadResult.LOADING
             binding.pokeListRecyclerview.isVisible = it == LoadResult.SUCCESS
-            binding.errorPoke.isVisible = it == LoadResult.FAIL
+            binding.errorViews.isVisible = it == LoadResult.FAIL
         }
 
         viewModel.loadData()
@@ -58,5 +59,9 @@ class MainActivity : AppCompatActivity() {
             }
         })
         return true
+    }
+
+    fun onRetry(view: View) {
+        viewModel.loadData()
     }
 }

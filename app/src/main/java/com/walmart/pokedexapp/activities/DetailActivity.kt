@@ -31,6 +31,7 @@ class DetailActivity: AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
     private val adapter = StateListAdapter()
     private val viewModel by viewModel<PokeDetailViewModel>()
+    private var pokeName: String = ""
 
     companion object {
         const val POKE_NAME = "poke_name"
@@ -52,10 +53,10 @@ class DetailActivity: AppCompatActivity() {
         viewModel.loading().observe(this) {
             binding.progressBar.isVisible = it == LoadResult.LOADING
             binding.pokeGroup.isVisible = it == LoadResult.SUCCESS
-            binding.errorPoke.isVisible = it == LoadResult.FAIL
+            binding.errorViews.isVisible = it == LoadResult.FAIL
         }
 
-        val pokeName = intent.getStringExtra(POKE_NAME)?:""
+        pokeName = intent.getStringExtra(POKE_NAME)?:""
         viewModel.loadData(pokeName)
     }
 
@@ -111,5 +112,9 @@ class DetailActivity: AppCompatActivity() {
             return true
         }
         return false
+    }
+
+    fun onRetry(view: View) {
+        viewModel.loadData(pokeName)
     }
 }

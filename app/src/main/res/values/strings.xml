@@ -5,4 +5,5 @@
     <string name="weight">Weight</string>
     <string name="error_loading_poke">Error loading poke</string>
     <string name="states">States</string>
+    <string name="retry">Retry</string>
 </resources>

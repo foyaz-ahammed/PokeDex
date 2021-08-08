@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".activities.DetailActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,7 +26,7 @@
             android:id="@+id/poke_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:constraint_referenced_ids="photo, name, weight, height, weight_title, height_title" />
+            app:constraint_referenced_ids="photo, name, weight, height, weight_title, height_title, stats_title, stats" />
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/loading_layout"
@@ -123,6 +124,13 @@
             app:layout_constraintTop_toBottomOf="@id/height"
             android:text="@string/height"/>
 
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/error_views"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:constraint_referenced_ids="error_poke, retry"/>
+
         <TextView
             android:id="@+id/error_poke"
             android:layout_width="0dp"
@@ -130,13 +138,22 @@
             android:layout_marginTop="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:visibility="gone"
             android:gravity="center"
             android:text="@string/error_loading_poke"
             android:textAppearance="@style/ErrorTextStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/error_poke"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:onClick="onRetry"
+            android:text="@string/retry"/>
 
         <TextView
             android:id="@+id/stats_title"
