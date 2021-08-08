@@ -9,6 +9,9 @@ import com.walmart.pokedexapp.databinding.StateItemBinding
 import com.walmart.pokedexapp.helper.getString
 import com.walmart.pokedexapp.repository.entities.StateItem
 
+/**
+ * [ListAdapter] to show poke types
+ */
 class StateListAdapter: ListAdapter<StateItem, StateListAdapter.ViewHolder>(DiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = StateItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)

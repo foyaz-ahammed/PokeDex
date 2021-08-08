@@ -13,6 +13,9 @@ import com.walmart.pokedexapp.repository.entities.LoadResult
 import com.walmart.pokedexapp.viewmodels.PokeListViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+/**
+ * Activity to show pokemon items
+ */
 class MainActivity : AppCompatActivity() {
     private val viewModel by viewModel<PokeListViewModel>()
     private val adapter = PokeListAdapter()

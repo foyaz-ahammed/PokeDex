@@ -4,6 +4,9 @@ import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
+/**
+ * Network response classes
+ */
 class Response {
     @JsonClass(generateAdapter = true)
     class PokemonData (

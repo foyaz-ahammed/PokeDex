@@ -13,6 +13,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+ * [ViewModel] used on main screen
+ */
 class PokeListViewModel(private val repository: PokemonRepository): ViewModel() {
     private var cacheData:List<Response.PokeItem>? = null
     private val pokeItems = MutableLiveData<List<Response.PokeItem>>()

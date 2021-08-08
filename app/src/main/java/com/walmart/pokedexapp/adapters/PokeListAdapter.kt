@@ -13,6 +13,9 @@ import com.walmart.pokedexapp.helper.capitalizeFirst
 import com.walmart.pokedexapp.helper.prettyPrintNo
 import com.walmart.pokedexapp.repository.entities.Response
 
+/**
+ * [ListAdapter] used to show poke list
+ */
 class PokeListAdapter: ListAdapter<Response.PokeItem, PokeListAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

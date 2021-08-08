@@ -16,6 +16,7 @@ import com.walmart.pokedexapp.R
 import com.walmart.pokedexapp.repository.entities.Response
 import com.walmart.pokedexapp.repository.entities.StateItem
 
+/* Helpful functions */
 fun Int.prettyPrintNo(): String = String.format("#%03d", this)
 fun String.capitalizeFirst(): String = replaceFirstChar { it.uppercase() }
 fun String.getNo(): Int {

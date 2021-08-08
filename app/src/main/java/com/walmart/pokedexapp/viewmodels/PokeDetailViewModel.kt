@@ -11,6 +11,9 @@ import com.walmart.pokedexapp.repository.entities.Response
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+/**
+ * [ViewModel] used on poke detail screen
+ */
 class PokeDetailViewModel(private val repository: PokemonRepository): ViewModel() {
     private val pokeData = MutableLiveData<Response.PokeDetailData>()
     private val loading = MutableLiveData<LoadResult>()

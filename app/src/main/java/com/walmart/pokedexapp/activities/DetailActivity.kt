@@ -27,6 +27,9 @@ import com.walmart.pokedexapp.repository.entities.Response
 import com.walmart.pokedexapp.viewmodels.PokeDetailViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+/**
+ * Activity to show pokemon item detail screen
+ */
 class DetailActivity: AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
     private val adapter = StateListAdapter()

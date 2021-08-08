@@ -6,6 +6,9 @@ import com.walmart.pokedexapp.repository.entities.DataResult
 import com.walmart.pokedexapp.repository.entities.Response
 import java.lang.Exception
 
+/**
+ * Repository class to load data from the network service
+ */
 class PokemonRepository(private val api: PokeAPI) {
 
     companion object {
